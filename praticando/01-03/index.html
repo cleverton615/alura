@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Filmes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat&family=Numans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <form>
+            <input 
+            type="text" 
+            class="input-item"
+            name="input-item" 
+            id="input-item"
+            placeholder="Digite o filme que deseja adicionar"
+            />
+            <button 
+            class="button-item" 
+            id="adicionar-item" 
+            type="button"
+            >Adicionar filme
+            </button>
+        </form>
+
+        <div id="container-lista">
+            <h2>Lista de filmes</h2>
+            <hr />
+
+            <ul id="lista-de-filmes">
+                <li>
+                    <div class="lista-item-container">
+                        <input type="checkbox" id="checkbox-1">
+                        <p>Vingadores</p>
+                    </div>
+                    <p class="texto-data">Segunda-feira (31/10/2022) às 08:30</p>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
