@@ -12,11 +12,14 @@ botaoAdicionar.addEventListener("click", (evento) => {
   }
 
   const itemDaLista = document.createElement("li"); //Cria um elemento no HTML do tipo definido
+
   const containerItemDaLista = document.createElement("div");
   containerItemDaLista.classList.add("lista-item-container"); //Acessa a lista de classe e adiciona o elemento
+
   const inputCheckbox = document.createElement("input");
   inputCheckbox.type = "checkbox"; //Insere o valor do input
   inputCheckbox.id = "checkbox-" + contador++; //adicionar + 1 ao checkbox
+  
   const nomeItem = document.createElement("p");
   nomeItem.innerHTML = inputItem.value; //Altera o paragráfo pelo digitado no input
 

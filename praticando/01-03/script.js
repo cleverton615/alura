@@ -1,52 +1,53 @@
-const inputItem = document.getElementById("input-item");
+const input = document.getElementById("input-item");
+const button = document.getElementById("adicionar-item");
 const listaFilmes = document.getElementById("lista-de-filmes");
-const btnItem = document.getElementById("adicionar-item");
 let contador = 0;
 
-btnItem.addEventListener("click", (evento) => {
+button.addEventListener("click", function (evento) {
   evento.preventDefault();
-  if (inputItem.value === "") {
-    alert("Insira algum filme.");
+  if (input.value === "") {
+    alert("Insira um filme!");
     return;
   }
+  const lista = document.createElement("li");
 
-  const itemDaLista = document.createElement("li");
-  const containerItemDaLista = document.createElement("div");
-  containerItemDaLista.classList.add("lista-item-container");
-  const inputCheckbox = document.createElement("input");
-  inputCheckbox.type = "checkbox";
-  inputCheckbox.id = "checkbox- " + contador++;
-  const nomeItem = document.createElement("p");
-  nomeItem.innerHTML = inputItem.value;
+  const container = document.createElement("div");
+  container.classList.add("lista-item-container");
 
-  inputCheckbox.addEventListener("click", function () {
-    if (inputCheckbox.checked) {
-      nomeItem.style.textDecoration = "line-through";
+  const checkboxInput = document.createElement("input");
+  checkboxInput.type = "checkbox";
+  checkboxInput.id = "checkbox- " + contador++;
+
+  const itemNome = document.createElement("p");
+  itemNome.innerHTML = input.value;
+
+  checkboxInput.addEventListener("click", function () {
+    if (checkboxInput.checked) {
+      itemNome.style.textDecoration = "line-through";
     } else {
-      nomeItem.style.textDecoration = "none";
+      itemNome.style.textDecoration = "none";
     }
   });
 
-  containerItemDaLista.appendChild(inputCheckbox);
-  containerItemDaLista.appendChild(nomeItem);
-  itemDaLista.appendChild(containerItemDaLista);
+  container.appendChild(checkboxInput);
+  container.appendChild(itemNome);
+  lista.appendChild(container);
 
-  diaDaSemana = new Date().toLocaleDateString("pt-BR", { weekday: "long" });
-  data = new Date().toLocaleDateString("pt-BR", {
+  const semana = new Date().toLocaleDateString("pt-BR", { weekday: "long" });
+  const data = new Date().toLocaleDateString("pt-BR", {
     day: "numeric",
     month: "numeric",
     year: "numeric",
   });
-  hora = new Date().toLocaleTimeString("pt-BR", {
+  const hora = new Date().toLocaleTimeString("pt-BR", {
     hour: "numeric",
     minute: "numeric",
   });
-  const dataCompleta = `${diaDaSemana} (${data} às ${hora})`;
+  const dataCompleta = `${semana} (${data}) às ${hora}`;
+  const textoTempo = document.createElement("p");
+  textoTempo.innerText = dataCompleta;
+  textoTempo.classList.add("texto-data");
+  lista.appendChild(textoTempo);
 
-  const itemData = document.createElement("p");
-  itemData.innerHTML = dataCompleta;
-  itemData.classList.add("texto-data");
-  itemDaLista.appendChild(itemData);
-
-  listaFilmes.appendChild(itemDaLista);
+  listaFilmes.appendChild(lista)
 });
