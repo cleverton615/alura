@@ -1,3 +1,4 @@
+import gerarDiaDaSemana from "./gerarDiaDaSemana.js";
 const inputItem = document.getElementById("input-item");
 let contador = 0;
 export function criarItemDaLista() {
@@ -32,16 +33,8 @@ export function criarItemDaLista() {
   containerItemDaLista.appendChild(nomeItem); // insere o elemento filho(nomeItem) no elemento pai (containerItemDaLista)
   itemDaLista.appendChild(containerItemDaLista); //insere o elemento filho (containerItemDaLista) no elemento pai (itemDaLista)
 
-  const diaDaSemana = new Date().toLocaleDateString("pt-BR", {
-    weekday: "long",
-  }); //Informa o dia da semana atual sem abreviar
-  const data = new Date().toLocaleDateString("pt-BR"); //Informa a data atual
-  const hora = new Date().toLocaleTimeString("pt-BR", {
-    //Informa a hora atual
-    hour: "numeric",
-    minute: "numeric",
-  });
-  const dataCompleta = `${diaDaSemana} (${data}) às ${hora}`; //Usando tamplet string para alinhar as variáveis
+  const dataCompleta = gerarDiaDaSemana();
+
   const itemData = document.createElement("p"); //Cria um elemento do tipo "p" para inserir o novo item
   itemData.innerText = dataCompleta; //Altera o item para o texto da dataCompleta
   itemData.classList.add("texto-data"); //Adiciona a lista de estilo
