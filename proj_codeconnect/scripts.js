@@ -41,3 +41,53 @@ inputUpload.addEventListener("change", async (evento) => {
     }
   }
 });
+
+const inputTags = document.getElementById("input-tags");
+const listaTags = document.getElementById("lista-tags");
+
+inputTags.addEventListener("keypress", (evento) => {
+  if (evento.key === "Enter") {
+    evento.preventDefault();
+    const tagTexto = inputTags.value.trim(); //"trim()" excluir os espaços em branco de antes e depois dos texto
+    if (tagTexto !== "") {
+      const tagNova = document.createElement("li");
+      tagNova.innerHTML = `<p>${tagTexto}</p> <img src="./img/close-black.svg" class="remove-tag">`;
+      listaTags.appendChild(tagNova);
+      inputTags.value = "";
+    }
+  }
+});
+
+listaTags.addEventListener("click", (evento) => {
+  if (evento.target.classList.contains("remove-tag")) {
+    //Aqui seleciona a classe
+    const tagQueQueroRemover = evento.target.parentElement; //Aqui informo que será um elemento parente
+    listaTags.removeChild(tagQueQueroRemover); //Aqui Remove
+  }
+});
+
+const tagsDisponiveis = [ //Cria as tags disponiveis
+  "Front-end",
+  "Back-end",
+  "Full-stack",
+  "Programação",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "Python",
+  "C++",
+  "C#",
+  "TypeScript",
+  "Java",
+  "Data Science",
+  "JSON",
+  "SQL",
+];
+
+async function verificarTagsDisponiveis(tagTexto) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(tagsDisponiveis.includes(tagTexto));
+    }, 1000);
+  });
+}
